@@ -1,0 +1,318 @@
+/**定义动画效果, 然后添加JS即可使用**/
+
+/*动画*/
+.scale-spring {
+    /* 安排下面的动画 尤其是 infinite 才会一直动 */
+    animation: scale-spring infinite;
+    animation-duration: 1s;
+    /* Safari and Chrome */
+    -webkit-animation: scale-spring infinite;
+    -webkit-animation-duration: 1s;
+}
+
+/**心跳**/
+@-webkit-keyframes scale-spring {
+    0% {
+        opacity: .5;
+        -webkit-transform: scale(.5)
+    }
+    80% {
+        opacity: .8;
+        -webkit-transform: scale(1.1)
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes scale-spring {
+    0% {
+        opacity: .5;
+        -webkit-transform: scale(.5)
+    }
+    80% {
+        opacity: .8;
+        -webkit-transform: scale(1.1)
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: scale(1)
+    }
+}
+
+/**渐入**/
+@-webkit-keyframes fadein {
+    0% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+/*动画*/
+.scale-rotate {
+    -webkit-animation: rotate infinite;
+    animation: rotate infinite;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+}
+
+/*旋转*/
+@-webkit-keyframes rotate {
+    from {
+        -webkit-transform: rotate(0)
+    }
+    to {
+        -webkit-transform: rotate(360deg)
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0)
+    }
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+/*放大*/
+.anim-scale {
+    -webkit-animation-name: to-scale;
+    animation-name: to-scale
+}
+
+@-webkit-keyframes to-scale {
+    0% {
+        opacity: .3;
+        -webkit-transform: scale(.5)
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: scale(1)
+    }
+}
+
+/*闪亮 白-红*/
+.shiny-white-red {
+    /* 安排下面的动画 尤其是 infinite 才会一直动 */
+    animation: white-red infinite;
+    animation-duration: 1s;
+    /* Safari and Chrome */
+    -webkit-animation: white-red infinite;
+    -webkit-animation-duration: 1s;
+}
+
+/*旋转*/
+@-webkit-keyframes white-red {
+    0% {
+        opacity: .5;
+        color: white
+    }
+    80% {
+        opacity: .8;
+        color: #ff9b51
+    }
+    100% {
+        opacity: 1;
+        color: red
+    }
+}
+
+/**
+ * 红色 #FF0000
+ *  橙色 #FF7F00
+ *  黄色 #FFFF00
+ *  绿色 #00FF00
+ *  青色 #00FFFF
+ *  蓝色 #0000FF
+ *  紫色 #8B00FF
+ */
+
+/*边框闪动:ease-in-out*/
+.shiny-shadow-blue {
+    /* 安排下面的动画 尤其是 infinite 才会一直动 */
+    animation: breathing-light infinite;
+    animation-duration: 1.5s;
+    /* Safari and Chrome */
+    -webkit-animation: breathing-light infinite;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+}
+
+/*心跳*/
+@-webkit-keyframes breathing-light {
+    0%, 100% {
+        box-shadow: 0 0 10px 1px #1E9FFF;
+    }
+    20% {
+        box-shadow: 0 0 10px 1px #1E9FFF;
+    }
+    40% {
+        box-shadow: 0 0 10px 3px #1E9FFF;
+    }
+    60% {
+        box-shadow: 0 0 10px 5px #1E9FFF;
+    }
+    80% {
+        box-shadow: 0 0 10px 3px #1E9FFF;
+    }
+}
+
+/*背景渐变: ease-in-out*/
+.background-gradient-rotate {
+    /* 安排下面的动画 尤其是 infinite 才会一直动 */
+    animation: background-gradient infinite;
+    animation-duration: 1s;
+    /* Safari and Chrome */
+    -webkit-animation: background-gradient infinite;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+}
+
+/*心跳*/
+@-webkit-keyframes background-gradient {
+    0% {
+        background-image: linear-gradient(60deg, #8510FF, #D025C2, #FF8B2D, #F64E2C);
+    }
+    20% {
+        background-image: linear-gradient(120deg, #8510FF, #D025C2, #FF8B2D, #F64E2C);
+    }
+    40% {
+        background-image: linear-gradient(180deg, #8510FF, #D025C2, #FF8B2D, #F64E2C);
+    }
+    60% {
+        background-image: linear-gradient(240deg, #8510FF, #D025C2, #FF8B2D, #F64E2C);
+    }
+    80% {
+        background-image: linear-gradient(300deg, #8510FF, #D025C2, #FF8B2D, #F64E2C);
+    }
+    100% {
+        background-image: linear-gradient(360deg, #8510FF, #D025C2, #FF8B2D, #F64E2C);
+    }
+}
+
+/*闪动和渐变背景旋转 : ease-in-out*/
+.background-rotate-shiny-shadow {
+    /* 安排下面的动画 尤其是 infinite 才会一直动 */
+    animation: rotate-shiny infinite;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    /* Safari and Chrome */
+    -webkit-animation: rotate-shiny infinite;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+}
+
+/*心跳*/
+@-webkit-keyframes rotate-shiny {
+    0% {
+        box-shadow: 0 0 10px 0 #FFF;
+        background-image: linear-gradient(60deg, #8510FF, #D025C2, #FF8B2D, #F64E2C);
+    }
+    20% {
+        box-shadow: 0 0 10px 1px #1E9FFF;
+        background-image: linear-gradient(120deg, #8510FF, #D025C2, #FF8B2D, #F64E2C);
+    }
+    40% {
+        box-shadow: 0 0 10px 3px #1E9FFF;
+        background-image: linear-gradient(180deg, #8510FF, #D025C2, #FF8B2D, #F64E2C);
+    }
+    60% {
+        box-shadow: 0 0 10px 5px #1E9FFF;
+        background-image: linear-gradient(240deg, #8510FF, #D025C2, #FF8B2D, #F64E2C);
+    }
+    80% {
+        box-shadow: 0 0 10px 3px #1E9FFF;
+        background-image: linear-gradient(300deg, #8510FF, #D025C2, #FF8B2D, #F64E2C);
+    }
+    100% {
+        box-shadow: 0 0 10px 1px #1E9FFF;
+        background-image: linear-gradient(360deg, #8510FF, #D025C2, #FF8B2D, #F64E2C);
+    }
+}
+
+
+/*两道环绕着跑*/
+.blue-bypass {
+    margin: auto;
+    color: #1E9FFF;
+    /*box-shadow: inset 0 0 0 1px rgba(105, 202, 98, 0.5);*/
+}
+
+.blue-bypass, .blue-bypass::before, .blue-bypass::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.blue-bypass::before, .blue-bypass::after {
+    content: '';
+    z-index: 1;
+    margin: -5%;
+    box-shadow: inset 0 0 15px 1px;
+    animation: clipMe 2s linear infinite;
+    -moz-animation: clipMe 2s linear infinite;
+    -webkit-animation: clipMe 2s linear infinite;
+}
+
+/*位置一定要在animation之后, 不然不会执行*/
+.blue-bypass::before {
+    /*从-4s开始运行动画: 跳过4秒动画*/
+    animation-delay: -1s; /* Opera */
+    -moz-animation-delay: -1s; /* Firefox */
+    -webkit-animation-delay: -1s; /* Safari 和 Chrome */
+}
+
+/*.blue-bypass:hover::after, .blue-bypass:hover::before {
+    background-color: rgba(255, 0, 0, 0.3);
+}*/
+
+/*162*212 上右下左*/
+@keyframes clipMe {
+    0%, 100% {
+        clip: rect(0px, 179px, 7px, 0px);
+    }
+    25% {
+        clip: rect(0px, 7px, 228px, 0px);
+    }
+    50% {
+        clip: rect(219px, 179px, 228px, 0px);
+    }
+    75% {
+        clip: rect(0px, 179px, 228px, 171px);
+    }
+}
+
+body {
+    position: relative;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/*放大百分之十*/
+.scale-percent {
+    transform: scale(1.1);
+    transition: transform 400ms linear;
+}

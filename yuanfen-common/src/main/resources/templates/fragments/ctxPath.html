@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"
+       xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<body>
+<header th:fragment="ctxPath">
+    <script type="text/javascript" th:inline="javascript">
+        /*<![CDATA[*/
+        var ctxPath = /*[[@{/}]]*/;
+        /*]]>*/
+        ctxPath = ctxPath=='/'?'':ctxPath;
+    </script>
+</header>
+</body>
+</html>

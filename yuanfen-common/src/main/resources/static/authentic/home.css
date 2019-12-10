@@ -1,0 +1,41 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background: #FFF;
+    overflow-y: hidden;
+}
+
+.stage {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.container, .stage {
+    width: 100%;
+    height: 100%;
+}
+
+.container .stage .card {
+    width: calc(10% - 1px);
+    height: 250px;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .stage .content {
+    width: 85%;
+    height: 85%;
+    /*background-image: linear-gradient(-45deg, #8510FF, #D025C2, #FF8B2D, #F64E2C);*/
+    margin: 0 auto;
+    border-radius: 2px;
+    position: relative;
+}
+
+.container .stage .content .show-img {
+    width: 100%;
+}

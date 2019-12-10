@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <th:block th:replace="fragments/ctxPath::ctxPath"></th:block>
+    <!-- Include all js compiled plugins (below), or include individual files as needed -->
+    <link rel="stylesheet" th:href="@{/authentic/home.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/authentic/animation.css}" type="text/css" />
+    <script th:src="@{/bootstrap/js/jquery.js}"></script>
+</head>
+<body>
+<div class="container">
+    <div class="stage">
+        <div class="card">
+            <div class="content background-gradient-rotate">
+
+            </div>
+        </div>
+        <!--shiny-shadow-blue-->
+        <div class="card">
+            <div class="content shiny-shadow-blue">
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="content background-rotate-shiny-shadow">
+
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/authentic/home.js}"></script>
+</body>
+</html>
