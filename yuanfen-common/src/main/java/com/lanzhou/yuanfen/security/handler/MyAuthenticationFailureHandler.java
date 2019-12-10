@@ -26,13 +26,13 @@ public class MyAuthenticationFailureHandler extends SimpleUrlAuthenticationFailu
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
         log.info("登录失败");
-        response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+        // response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
         response.setContentType("application/json;charset=UTF-8");
         ServerResponseResult result;
         if (exception instanceof UsernameNotFoundException || exception instanceof BadCredentialsException) {
             result = ServerResponseResult.fail("用户名或密码输入错误，登录失败!");
         } else {
-            result = ServerResponseResult.fail("登录失败!");
+            result = ServerResponseResult.fail("登录失败, 请稍后重试 !");
         }
         response.getWriter().write(JSON.toJSONString(result));
     }

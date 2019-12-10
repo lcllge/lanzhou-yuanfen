@@ -91,14 +91,14 @@ $(document).ready(function () {
             });
             return false;
         }
-        var url = ctxPath + "login", json = {username: username, password: password};
+        var url = ctxPath + "emailVerify", json = {email: email, eCode: emailCode};
         AjaxPost(url, json, function () {
         }, function (result) {
             result = JSONUtil.parseObj(result);
             if (parseInt(result.code) === 200) {
                 window.location.href = ctxPath + "home";
             } else {
-                layer.msg('用户登入异常, 请检查用户名或密码 !');
+                WarnAlert(result.message);
             }
         });
     });

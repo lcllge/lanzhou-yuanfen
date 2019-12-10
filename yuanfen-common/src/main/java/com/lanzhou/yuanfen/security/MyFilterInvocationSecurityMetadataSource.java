@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 /**
+ * 用于过滤器和权限的对应关系加载和决断
  * @author LanZhou
  */
 @Configuration

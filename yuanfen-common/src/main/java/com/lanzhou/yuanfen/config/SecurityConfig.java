@@ -1,11 +1,14 @@
 package com.lanzhou.yuanfen.config;
 
+import com.lanzhou.yuanfen.security.filter.EmailAuthenticationProcessingFilter;
 import com.lanzhou.yuanfen.security.handler.MyAuthenticationFailureHandler;
 import com.lanzhou.yuanfen.security.handler.MyAuthenticationSuccessHandler;
 import com.lanzhou.yuanfen.security.handler.AuthenticationAccessDeniedHandler;
 import com.lanzhou.yuanfen.security.mgt.MyAccessDecisionManager;
 import com.lanzhou.yuanfen.security.MyFilterInvocationSecurityMetadataSource;
+import com.lanzhou.yuanfen.security.provider.EmailAuthenticationProvider;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -14,9 +17,14 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
+import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.annotation.Resource;
+import javax.servlet.Filter;
 
 /**
  * @author Administrator
@@ -52,9 +60,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+    /**
+     * 这里可以添加多个登入处理器
+     *
+     * @param auth
+     * @throws Exception
+     */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(myUserDetailsService).passwordEncoder(myPasswordEncoder());
+        auth.authenticationProvider(ipAuthenticationProvider())
+                .userDetailsService(myUserDetailsService).passwordEncoder(myPasswordEncoder());
     }
 
     @Override
@@ -62,7 +77,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         String[] ignoreMatchers = new String[]{
                 "/loginPage",
                 "/register",
-                "/sendEmailPage",
+                "/emailLogin",
                 "/registerUser",
                 "/sendEmail",
                 "/sendSms",
@@ -71,6 +86,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/fragments/**"
         };
         web.ignoring().antMatchers(ignoreMatchers);
+    }
+
+
+    @Bean
+    public AuthenticationEntryPoint emailEntryPoint() {
+        LoginUrlAuthenticationEntryPoint emailEntryPoint = new LoginUrlAuthenticationEntryPoint("/emailLogin");
+        return emailEntryPoint;
     }
 
     /**
@@ -105,7 +127,37 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and().csrf().disable()
                 .exceptionHandling()
-                .accessDeniedHandler(authenticationAccessDeniedHandler);
+                .accessDeniedHandler(authenticationAccessDeniedHandler)
+                .authenticationEntryPoint(emailEntryPoint());
+        // 添加邮箱登入端点
+        http.addFilterBefore(emailAuthenticationProcessingFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class);
+    }
+
+
+    /**
+     * 配置封装ipAuthenticationToken的过滤器
+     *
+     * @param authenticationManager
+     * @return
+     */
+    private Filter emailAuthenticationProcessingFilter(AuthenticationManager authenticationManager) {
+        EmailAuthenticationProcessingFilter ipAuthenticationProcessingFilter = new EmailAuthenticationProcessingFilter();
+        // 为过滤器添加认证器
+        ipAuthenticationProcessingFilter.setAuthenticationManager(authenticationManager);
+        // 重写认证失败时的逻辑
+        ipAuthenticationProcessingFilter.setAuthenticationFailureHandler(myAuthenticationFailureHandler);
+        ipAuthenticationProcessingFilter.setAuthenticationSuccessHandler(myAuthenticationSuccessHandler);
+        return ipAuthenticationProcessingFilter;
+    }
+
+    /**
+     * email认证者配置
+     *
+     * @return
+     */
+    @Bean
+    public EmailAuthenticationProvider ipAuthenticationProvider() {
+        return new EmailAuthenticationProvider();
     }
 
 

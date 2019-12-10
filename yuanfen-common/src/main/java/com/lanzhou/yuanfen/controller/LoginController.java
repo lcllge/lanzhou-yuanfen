@@ -41,9 +41,9 @@ public class LoginController {
      *
      * @return
      */
-    @RequestMapping("/sendEmailPage")
-    public String sendEmailPage() {
-        return "sendEmailPage";
+    @RequestMapping("/emailLogin")
+    public String emailLogin() {
+        return "emailLogin";
     }
 
     /**
