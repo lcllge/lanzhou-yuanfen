@@ -30,6 +30,7 @@ $(document).ready(function () {
 
     // login-form
     $("#sign").on('click', function () {
+        $("input").css({"border": "1px solid #474d5b", "box-shadow": "none"});
         var $username = $("input[name='username']"), $password = $("input[name='password']");
         var username = $username.val(),password = $password.val();
         if(!username){

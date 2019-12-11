@@ -107,14 +107,13 @@ public class LoginController {
      */
     @RequestMapping("/sendEmail")
     @ResponseBody
-    public synchronized ServerResponseResult sendEmail(@RequestParam("username") String username,
-                                                       @RequestParam("email") String email) {
-        User nameExist = userService.getOne(new QueryWrapper<User>().eq("username", username).eq("email", email));
+    public synchronized ServerResponseResult sendEmail(@RequestParam("email") String email) {
+        User nameExist = userService.getOne(new QueryWrapper<User>().eq("email", email));
         if (nameExist == null) {
             return ServerResponseResult.fail("您输入的用户信息错误, 请重新输入 !");
         }
         String emailCode = generateEmailCode();
-        String text = "尊敬的" + username + " : 您此次登入的验证码为: " + emailCode;
+        String text = "尊敬的" + nameExist.getUsername() + " : 您此次登入的验证码为: " + emailCode;
         emailService.sendSimpleMail("【猿粪】关于猿粪网的重置密码的验证码通知", text, nameExist.getEmail());
         userService.update(new UpdateWrapper<User>().eq("user_key", nameExist.getUserKey()).set("eml_code", emailCode));
         return ServerResponseResult.success();

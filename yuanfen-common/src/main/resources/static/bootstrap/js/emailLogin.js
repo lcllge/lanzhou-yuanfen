@@ -29,16 +29,17 @@ $(document).ready(function () {
 
     // login-form
     $("#send").on('click', function () {
+        $("input").css({"border": "1px solid #474d5b", "box-shadow": "none"});
         var $username = $("input[name='username']"), $email = $("input[name='email']");
         var username = $username.val(), email = $email.val();
-        if (!username) {
+        /*if (!username) {
             WarnAlert("请输入用户名 !!");
             $username.css({
                 "border": "1px solid #f70404",
                 "box-shadow": "0px 5px 10px #fd000c33"
             });
             return false;
-        }
+        }*/
         if (!email) {
             WarnAlert("请输入邮箱 !!");
             $email.css({
@@ -47,7 +48,7 @@ $(document).ready(function () {
             });
             return false;
         }
-        var url = ctxPath + "sendEmail", json = {username: username, email: email};
+        var url = ctxPath + "sendEmail", json = {email: email};
         AjaxPost(url, json, function () {
         }, function (result) {
             result = JSONUtil.parseObj(result);
@@ -64,17 +65,18 @@ $(document).ready(function () {
 
     // login-form
     $("#sign").on('click', function () {
+        $("input").css({"border": "1px solid #474d5b", "box-shadow": "none"});
         var $username = $("input[name='username']"), $email = $("input[name='email']"),
             $emailCode = $("input[name='emailCode']");
         var username = $username.val(), email = $email.val(), emailCode = $emailCode.val();
-        if (!username) {
+        /*if (!username) {
             WarnAlert("请输入用户名 !!");
             $username.css({
                 "border": "1px solid #f70404",
                 "box-shadow": "0px 5px 10px #fd000c33"
             });
             return false;
-        }
+        }*/
         if (!email) {
             WarnAlert("请输入邮箱 !!");
             $email.css({
