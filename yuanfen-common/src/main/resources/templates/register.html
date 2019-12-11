@@ -1,6 +1,5 @@
-
 <!doctype html>
-<html  lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <!-- meta data -->
@@ -16,7 +15,7 @@
     <link rel="shortcut icon" type="image/icon" th:href="@{/logo/favicon.png}"/>
 
     <!--font-awesome.min.css-->
-    <link rel="stylesheet" th:href="@{/bootstrap/css/font-awesome.min.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/bootstrap/css/font-awesome.min.css}" type="text/css"/>
 
     <!--animate.css-->
     <link rel="stylesheet" th:href="@{/bootstrap/css/animate.css}">
@@ -41,6 +40,12 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <style>
+        .layui-layer-btn0:hover {
+            padding: 0 15px;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -58,19 +63,23 @@
                         <form id="register">
                             <div class="form-group">
                                 <label for="signin_form">用户名</label>
-                                <input type="text" name="username" class="form-control" id="signin_form" placeholder="请输入用户名" autocomplete="off">
+                                <input type="text" name="username" class="form-control" id="signin_form"
+                                       placeholder="请输入用户名" autocomplete="off">
                             </div><!--/.form-group -->
                             <div class="form-group">
                                 <label for="signin_form4">密码</label>
-                                <input type="password" name="password" class="form-control" id="signin_form4" placeholder="请输入密码" autocomplete="off">
+                                <input type="password" name="password" class="form-control" id="signin_form4"
+                                       placeholder="请输入密码" autocomplete="off">
                             </div><!--/.form-group -->
                             <div class="form-group">
                                 <label for="signin_form3">邮箱</label>
-                                <input type="email" name="email" class="form-control" id="signin_form3" placeholder="请输入你的邮箱地址" autocomplete="off">
+                                <input type="email" name="email" class="form-control" id="signin_form3"
+                                       placeholder="请输入你的邮箱地址" autocomplete="off">
                             </div><!--/.form-group -->
                             <div class="form-group">
                                 <label for="signin_form5">重复密码</label>
-                                <input type="password" name="rePassword" class="form-control" id="signin_form5" placeholder="请重新输入密码" autocomplete="off">
+                                <input type="password" name="rePassword" class="form-control" id="signin_form5"
+                                       placeholder="请重新输入密码" autocomplete="off">
                             </div><!--/.form-group -->
                         </form><!--/form -->
                     </div><!--/.signin-form -->
@@ -83,7 +92,8 @@
                         <div class="awesome-checkbox-list">
                             <ul class="unstyled centered">
                                 <li>
-                                    <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" value="value2">
+                                    <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox"
+                                           value="value2">
                                     <label for="styled-checkbox-2">接受我们的条款和条件</label>
                                 </li>
                                 <li></li>
@@ -97,7 +107,8 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="signin-footer">
-                        <button type="button" class="btn signin_btn" data-toggle="modal" id="signOut" data-target=".signin_modal">
+                        <button type="button" class="btn signin_btn" data-toggle="modal" id="signOut"
+                                data-target=".signin_modal">
                             注册
                         </button>
                         <p>
@@ -117,7 +128,8 @@
 <!--footer copyright start -->
 <footer class="footer-copyright">
     <div id="scroll-Top">
-        <i class="fa fa-angle-double-up return-to-top" id="scroll-top1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
+        <i class="fa fa-angle-double-up return-to-top" id="scroll-top1" data-toggle="tooltip" data-placement="top"
+           title="" data-original-title="Back to Top" aria-hidden="true"></i>
     </div><!--/.scroll-Top-->
 
 </footer><!--/.hm-footer-copyright-->

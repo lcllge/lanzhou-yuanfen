@@ -127,8 +127,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and().csrf().disable()
                 .exceptionHandling()
-                .accessDeniedHandler(authenticationAccessDeniedHandler)
-                .authenticationEntryPoint(emailEntryPoint());
+                .accessDeniedHandler(authenticationAccessDeniedHandler);
         // 添加邮箱登入端点
         http.addFilterBefore(emailAuthenticationProcessingFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class);
     }

@@ -37,8 +37,8 @@ $(document).ready(function () {
     // login-form
     $("#signOut").on('click', function () {
         var data = {};
-        var t = $('#register').serializeArray(),unfail = false;
-        $("input").css({"border":"1px solid #474d5b","box-shadow":"none"});
+        var t = $('#register').serializeArray(), unfail = false;
+        $("input").css({"border": "1px solid #474d5b", "box-shadow": "none"});
         $.each(t, function () {
             if (this.value == null || this.value === '') {
                 // alert(this.name);
@@ -53,12 +53,12 @@ $(document).ready(function () {
             }
             data[this.name] = this.value;
         });
-        if(unfail){
+        if (unfail) {
             return false;
         }
         var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
-        var isok= reg.test(data.email);
-        if(!isok){
+        var isok = reg.test(data.email);
+        if (!isok) {
             WarnAlert("请输入正确的邮箱地址 !");
             $("input[name='email']").css({
                 "border": "1px solid #f70404",
@@ -66,7 +66,7 @@ $(document).ready(function () {
             });
             return false;
         }
-        if(data.password !== data.rePassword){
+        if (data.password !== data.rePassword) {
             WarnAlert("两次输入的密码不一致 !");
             $("input[name='rePassword']").val('').css({
                 "border": "1px solid #f70404",
@@ -80,9 +80,15 @@ $(document).ready(function () {
         }, function (result) {
             result = JSONUtil.parseObj(result);
             if (parseInt(result.code) === 200) {
-                SuccessAlert("注册成功 !!");
-                // window.location.href = ctxPath + "/loginPage";
-            }else{
+                layer.alert('注册成功 !!', {
+                    skin: 'layui-layer-molv' //样式类名
+                    ,closeBtn: 0,
+                    icon: 1
+                }, function(){
+                    window.location.href = ctxPath + "/loginPage";
+                });
+
+            } else {
                 ErrorAlert(result.message);
             }
         });
